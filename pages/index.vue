@@ -2,22 +2,7 @@
   <div class="max-w-5xl mx-auto py-5">
     <div class="flex flex-wrap">
       <div v-for="item in items.items" :key="item.name" class="w-6/12 my-4 px-2">
-        <div class="rounded flex card overflow-hidden relative shadow-lg hover:shadow-xl">
-          <div class="card__image">
-            <img :src="`https://res.cloudinary.com/hellofresh/image/upload/f_auto,fl_lossy,h_436,q_auto/v1/hellofresh_s3/${item.imagePath}`" />
-          </div>
-          <div class="absolute inset-x-0 bottom-0 px-3 py-5 text-gray-100 card__details">
-            <div class="font-bold">
-              {{ item.name }}
-            </div>
-            <div class="font-medium">
-              {{ item.headline }}
-            </div>
-          </div>
-          <div class="absolute rounded-full card__link p-1 bg-teal-400 text-gray-100 flex items-center justify-center">
-            []
-          </div>
-        </div>
+        <card :item="item"></card>
       </div>
     </div>
   </div>
@@ -26,9 +11,11 @@
 <script>
 
 import axios from 'axios'
+import card from '~/components/Card.vue'
 
 export default {
   components: {
+    card
   },
   props: {
 
