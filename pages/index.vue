@@ -2,7 +2,7 @@
   <div class="max-w-5xl mx-auto py-5">
     <div class="flex flex-wrap">
       <div v-for="item in items.items" :key="item.name" class="w-6/12 my-4 px-2">
-        <card :item="item"></card>
+        <card :item="item" />
       </div>
     </div>
   </div>
@@ -18,7 +18,6 @@ export default {
     card
   },
   props: {
-
   },
 
   async asyncData () {
