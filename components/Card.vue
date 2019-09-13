@@ -22,10 +22,27 @@
     </div>
     <transition name="slide-fade">
       <div v-if="showRecipe" class="fixed inset-0 py-16 flex z-10 recipe-overlay">
-        <div class="max-w-3xl mx-auto p-5 bg-white">
-          <div>{{ item.name }}</div>
+        <div class="max-w-3xl mx-auto p-5 bg-white rounded shadow-xl relative overflow-y-auto">
+          <div class="absolute rounded-full top-0 right-0 mt-5 mr-5 p-1 bg-teal-400 text-gray-100 flex items-center justify-center w-12 h-12" @click="showThis">
+            x
+          </div>
+          <div class="-mx-5 -mt-5 mb-5">
+            <img :src="`https://res.cloudinary.com/hellofresh/image/upload/f_auto,fl_lossy,h_768,q_auto/v1/hellofresh_s3/${item.imagePath}`"></img>
+          </div>
+          <div class="static flex justify-between">
+            <div class="text-4xl font-medium">{{ item.name }}</div>
+          </div>
           <div>{{ item.seoDescription }} </div>
-          <span @click="showThis">close</span>
+          <div v-for="ingredient in item.ingredients" :key="ingredient">
+            {{ingredient.name}}
+          </div>
+
+          <div v-for="(step, index) in item.steps" :key="step">
+            <div class="rounded-full bg-teal-100">
+              {{index + 1}}
+            </div>
+            <div v-html="step.instructionsHTML"></div>
+          </div>
         </div>
       </div>
     </transition>
@@ -43,10 +60,13 @@ export default {
 
   methods: {
     showThis () {
+      const body = document.getElementsByTagName('body')[0]
       if (this.showRecipe === true) {
         this.showRecipe = false
+        body.classList.remove('overflow-hidden')
       } else {
         this.showRecipe = true
+        body.classList.toggle('overflow-hidden')
       }
     }
   },
