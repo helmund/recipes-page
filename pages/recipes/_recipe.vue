@@ -14,13 +14,13 @@ export default {
     item: Object
   },
 
-  created () {
-    const _recipe = this.$route
-    console.log(_recipe)
-  },
-
   computed: {
     //
+  },
+
+  created () {
+    // const _recipe = this.$route
+    // console.log(_recipe)
   }
 }
 </script>
