@@ -5,6 +5,9 @@
         <img :src="`https://res.cloudinary.com/hellofresh/image/upload/f_auto,fl_lossy,h_436,q_auto/v1/hellofresh_s3/${item.imagePath}`"></img>
       </div>
       <div class="absolute inset-x-0 bottom-0 px-3 py-5 text-gray-100 card__details">
+        <div v-for="tag in item.tags" :key="tag.name" class="inline-flex mr-2 bg-green-500 rounded p-1 text-white">
+          {{tag.name}}
+        </div>
         <div class="font-bold">
           {{ item.name }}
         </div>
@@ -40,7 +43,7 @@
           <div class="flex flex-wrap justify-center bg-gray-100 py-2 mb-5 -mx-5 shadow-inner--custom">
             <div
               v-for="(ingredient, index) in item.ingredients"
-              :key="ingredient"
+              :key="ingredient.id"
               class="w-5/12"
             >
               <div
@@ -58,7 +61,7 @@
 
           <div
             v-for="(step, index) in item.steps"
-            :key="step"
+            :key="step.index"
             class="flex mb-4"
           >
             <div class="font-medium text-5xl leading-none mr-2">

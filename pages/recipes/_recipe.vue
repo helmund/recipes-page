@@ -20,7 +20,8 @@ export default {
 
   created () {
     // const _recipe = this.$route
-    // console.log(_recipe)
+    const _item = this
+    console.log(_item)
   }
 }
 </script>
