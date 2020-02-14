@@ -5,7 +5,7 @@
         <img :src="`https://res.cloudinary.com/hellofresh/image/upload/f_auto,fl_lossy,h_436,q_auto/v1/hellofresh_s3/${item.imagePath}`"></img>
       </div>
       <div class="absolute inset-x-0 bottom-0 px-3 py-5 text-gray-100 card__details">
-        <div v-for="tag in item.tags" :key="tag.name" class="inline-flex mr-2 bg-green-500 rounded p-1 text-white">
+        <div v-for="(tag, i) in item.tags" :key="`${i}-${tag.name}`" class="inline-flex mr-2 bg-green-500 rounded p-1 text-white">
           {{tag.name}}
         </div>
         <div class="font-bold">
