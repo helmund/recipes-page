@@ -1,7 +1,15 @@
 <template>
   <div class="max-w-5xl mx-auto py-5">
+    <div class="flex justify-center">
+      <button @click="picker" class="mr-2 bg-green-500 rounded p-1 text-white">
+        Zufallsrezept
+      </button>
+    </div>
     <div class="flex flex-wrap">
-      <div v-for="item in items.items" :key="item.name" class="w-full md:w-6/12 my-4 px-2">
+      <div v-if="chosenRecipe" class="w-full md:w-6/12 my-4 px-2">
+        <card :item="chosenRecipe" />
+      </div>
+      <div v-else v-for="item in items.items" :key="item.name" class="w-full md:w-6/12 my-4 px-2">
         <card :item="item" />
       </div>
     </div>
@@ -18,11 +26,21 @@ export default {
     card
   },
   props: {
+    chosenRecipe: Object
+
   },
 
   async asyncData () {
-    const { data } = await axios.get('/recipes.json')
+    const { data } = await axios.get('/rezepte-500-750.json')
     return { items: data }
+  },
+  methods: {
+    picker () {
+      // console.log(this.items.items.length)
+      const randomRecipe = Math.floor(Math.random() * this.items.items.length)
+      this.chosenRecipe = this.items.items[randomRecipe]
+      console.log(this.chosenRecipe)
+    }
   }
 }
 
