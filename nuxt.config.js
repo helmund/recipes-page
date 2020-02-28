@@ -1,4 +1,11 @@
-
+import axios from "axios"
+let dynamicRoutes = () => {
+return axios
+  .get("/recipes.json")
+  .then(res => {
+    return res.data.map(recipe => `/recipes/${recipe.slug}`)
+  })
+}
 export default {
   mode: 'spa',
   /*
@@ -51,6 +58,9 @@ export default {
   ** See https://axios.nuxtjs.org/options
   */
   axios: {
+  },
+  generate: {
+    routes: dynamicRoutes
   },
   /*
   ** Build configuration
