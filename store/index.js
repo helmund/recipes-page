@@ -8,7 +8,7 @@ export const mutations = {
     state.loading = true;
   },
   updateRecipes: (state, recipes) => {
-    state.recipes = recipes,
+    state.recipes = Object.freeze(recipes),
     state.loading = false;
   }
 }
@@ -20,7 +20,7 @@ export const actions = {
   }) {
     commit('getRecipes', recipes)
     if (state.recipes.length) { return }
-    let recipes = await fetch('/recipes.json'
+    let recipes = await fetch('/rezepte-0-250.json'
     ).then(res => res.json())
     recipes = recipes.items
       // .filter(el => el.status === 'publish')

@@ -1,5 +1,5 @@
 <template>
-  <div class="max-w-5xl mx-auto py-5" v-if="isLoaded">
+  <div class="max-w-5xl mx-auto py-5">
     <div class="flex justify-center">
       <button @click="picker" class="mr-2 bg-green-500 rounded p-1 text-white">
         Zufallsrezept
@@ -9,19 +9,19 @@
       <div v-if="chosenRecipe" class="w-full md:w-6/12 my-4 px-2">
         <card :item="chosenRecipe" />
       </div>
-      <div v-else v-for="recipe in recipes" :key="recipe.name" class="w-full md:w-6/12 my-4 px-2">
+      <div v-else v-for="recipe in recipes" :key="recipe.id" class="w-full md:w-6/12 my-4 px-2">
         <card :item="recipe" />
       </div>
     </div>
   </div>
-  <div v-else class="flex flex-wrap">
+  <!-- <div v-else class="flex flex-wrap">
     <div class="w-full md:w-6/12 my-4 px-2">
       <loading-card tag="pizza"></loading-card>
     </div>
     <div class="w-full md:w-6/12 my-4 px-2">
       <loading-card tag="noodles"></loading-card>
     </div>
-  </div>
+  </div> -->
 </template>
 
 <script>

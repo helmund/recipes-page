@@ -1,5 +1,5 @@
 <template>
-<div v-if="isLoaded">
+  <div v-if="isLoaded">
     <div class="">
       <div class="max-w-3xl mx-auto p-5 bg-white relative ">
         <router-link 
@@ -49,6 +49,9 @@
         </div>
       </div>
     </div>
+  </div>
+  <div v-else class="h-screen w-screen flex items-center justify-center">
+    Lädt
   </div>
 </template>
 
