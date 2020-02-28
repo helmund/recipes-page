@@ -22,22 +22,16 @@
         []
       </a>
     </div>
-    <transition name="slide-fade">
-      <overlay
-        :item="item"
-        v-if="showRecipe"
-        @close="showRecipe = false" />
-    </transition>
   </div>
 </template>
 
 <script>
-import overlay from '~/components/Overlay.vue'
+//import overlay from '~/components/Overlay.vue'
 
 export default {
   name: 'Card',
   components: {
-    overlay
+  //  overlay
   },
 
   data () {
