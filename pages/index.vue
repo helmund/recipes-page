@@ -1,5 +1,5 @@
 <template>
-  <div class="max-w-5xl mx-auto py-5">
+  <div class="max-w-5xl mx-auto py-5" v-if="isLoaded">
     <div class="flex justify-center">
       <button @click="picker" class="mr-2 bg-green-500 rounded p-1 text-white">
         Zufallsrezept
@@ -12,10 +12,14 @@
       <div v-else v-for="recipe in recipes" :key="recipe.name" class="w-full md:w-6/12 my-4 px-2">
         <card :item="recipe" />
       </div>
-
-      <!-- <div class="" v-for="recipe in recipes" :key="recipe.id">
-          {{ recipe }}
-      </div> -->
+    </div>
+  </div>
+  <div v-else class="flex flex-wrap">
+    <div class="w-full md:w-6/12 my-4 px-2">
+      <loading-card tag="pizza"></loading-card>
+    </div>
+    <div class="w-full md:w-6/12 my-4 px-2">
+      <loading-card tag="noodles"></loading-card>
     </div>
   </div>
 </template>
@@ -24,10 +28,12 @@
 
 // import axios from 'axios'
 import card from '~/components/Card.vue'
+import loadingCard from '~/components/LoadingCard.vue'
 
 export default {
   components: {
-    card
+    card,
+    loadingCard
   },
   props: {
     chosenRecipe: Object
@@ -36,20 +42,17 @@ export default {
   computed: {
     recipes () {
       return this.$store.state.recipes
+    },
+    isLoaded () {
+      return !this.$store.state.loading
     }
   },
 
   created () {
     this.$store.dispatch('getRecipes')
   },
-
-  // async asyncData () {
-  //   const { data } = await axios.get('/rezepte-500-750.json')
-  //   return { items: data }
-  // },
   methods: {
     picker () {
-      // console.log(this.items.items.length)
       const randomRecipe = Math.floor(Math.random() * this.recipes.length)
       this.chosenRecipe = this.recipes[randomRecipe]
       console.log(this.chosenRecipe)

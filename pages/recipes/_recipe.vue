@@ -6,6 +6,9 @@
           to="/"
           class="absolute rounded-full top-0 right-0 mt-5 mr-5 p-1 bg-teal-400 text-gray-100 flex items-center justify-center w-12 h-12 cursor-pointer"
           >x</router-link>
+        <div class="rounded-full bottom-10 right-10 mt-5 mr-5 p-1 bg-teal-400 text-gray-100 flex items-center justify-center w-12 h-12 cursor-pointer fixed" @click="getIngrediens">
+          O
+        </div>
         <div class="-mx-5 -mt-5 mb-5">
           <img :src="`https://res.cloudinary.com/hellofresh/image/upload/f_auto,fl_lossy,h_768,q_auto/v1/hellofresh_s3/${recipe.imagePath}`"></img>
         </div>
@@ -66,12 +69,22 @@ export default {
   data () {
     return {
       slug: this.$route.params.recipe,
+      // i: ''
     }
   },
 
   created () {
     this.$store.dispatch('getRecipes')
     console.log(this.$route.params)
-  }
+  },
+
+  methods: {
+    getIngrediens () {
+      var i;
+      for (i = 0; i < this.recipe.ingredients.length; i++) {
+        console.log(this.recipe.ingredients[i].name)
+      }
+    }
+  },
 }
 </script>
