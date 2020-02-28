@@ -2,7 +2,9 @@
   <div>
     <div class="fixed inset-0 py-16 flex z-10 recipe-overlay">
       <div class="max-w-3xl mx-auto p-5 bg-white rounded shadow-xl relative overflow-y-auto">
-        <div class="absolute rounded-full top-0 right-0 mt-5 mr-5 p-1 bg-teal-400 text-gray-100 flex items-center justify-center w-12 h-12 cursor-pointer" @click="showThis">
+        <div
+          class="absolute rounded-full top-0 right-0 mt-5 mr-5 p-1 bg-teal-400 text-gray-100 flex items-center justify-center w-12 h-12 cursor-pointer"
+          @click="$emit('close')">
           x
         </div>
         <div class="-mx-5 -mt-5 mb-5">
@@ -54,17 +56,18 @@ export default {
   props: {
     item: {
       type: [Array, Object]
-    },
-    showRecipe: Boolean
+    }
+    // showRecipe: false
   },
 
   created () {
   },
 
   methods: {
-    showThis () {
-      // console.log(showRecipe)
-    }
+    // closeThis () {
+    //   // console.log('adsd')
+    //   this.$emit('showRecipe', 'false')
+    // }
   }
 }
 </script>

@@ -23,7 +23,10 @@
       </div>
     </div>
     <transition name="slide-fade">
-      <overlay :item="item" v-if="showRecipe" />
+      <overlay
+        :item="item"
+        v-if="showRecipe"
+        @close="showRecipe = false" />
     </transition>
   </div>
 </template>
@@ -36,9 +39,15 @@ export default {
   components: {
     overlay
   },
+
+  data () {
+    return {
+      showRecipe: false
+    }
+  },
+
   props: {
-    item: Object,
-    showRecipe: Boolean
+    item: Object
   },
 
   created () {
@@ -46,13 +55,13 @@ export default {
 
   methods: {
     showThis () {
-      const body = document.getElementsByTagName('body')[0]
+      // const body = document.getElementsByTagName('body')[0]
       if (this.showRecipe === true) {
         this.showRecipe = false
-        body.classList.remove('overflow-hidden')
+        // body.classList.remove('overflow-hidden')
       } else {
         this.showRecipe = true
-        body.classList.toggle('overflow-hidden')
+        // body.classList.toggle('overflow-hidden')
       }
     }
   }
