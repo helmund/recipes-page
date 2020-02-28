@@ -9,16 +9,20 @@
       <div v-if="chosenRecipe" class="w-full md:w-6/12 my-4 px-2">
         <card :item="chosenRecipe" />
       </div>
-      <div v-else v-for="item in items.items" :key="item.name" class="w-full md:w-6/12 my-4 px-2">
-        <card :item="item" />
+      <div v-else v-for="recipe in recipes" :key="recipe.name" class="w-full md:w-6/12 my-4 px-2">
+        <card :item="recipe" />
       </div>
+
+      <!-- <div class="" v-for="recipe in recipes" :key="recipe.id">
+          {{ recipe }}
+      </div> -->
     </div>
   </div>
 </template>
 
 <script>
 
-import axios from 'axios'
+// import axios from 'axios'
 import card from '~/components/Card.vue'
 
 export default {
@@ -27,18 +31,27 @@ export default {
   },
   props: {
     chosenRecipe: Object
-
   },
 
-  async asyncData () {
-    const { data } = await axios.get('/rezepte-500-750.json')
-    return { items: data }
+  computed: {
+    recipes () {
+      return this.$store.state.recipes
+    }
   },
+
+  created () {
+    this.$store.dispatch('getRecipes')
+  },
+
+  // async asyncData () {
+  //   const { data } = await axios.get('/rezepte-500-750.json')
+  //   return { items: data }
+  // },
   methods: {
     picker () {
       // console.log(this.items.items.length)
-      const randomRecipe = Math.floor(Math.random() * this.items.items.length)
-      this.chosenRecipe = this.items.items[randomRecipe]
+      const randomRecipe = Math.floor(Math.random() * this.recipes.length)
+      this.chosenRecipe = this.recipes[randomRecipe]
       console.log(this.chosenRecipe)
     }
   }

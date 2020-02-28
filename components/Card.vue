@@ -15,12 +15,12 @@
           {{ item.headline }}
         </div>
       </div>
-      <div
+      <a
+        :href="`recipes/${item.slug}`"
         class="absolute rounded-full card__link p-1 bg-teal-400 text-gray-100 flex items-center justify-center cursor-pointer"
-        @click="showThis"
       >
         []
-      </div>
+      </a>
     </div>
     <transition name="slide-fade">
       <overlay
