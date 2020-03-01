@@ -6,7 +6,9 @@
           to="/"
           class="absolute rounded-full top-0 right-0 mt-5 mr-5 p-1 bg-teal-400 text-gray-100 flex items-center justify-center w-12 h-12 cursor-pointer"
           >x</router-link>
-        <div class="rounded-full bottom-10 right-10 mt-5 mr-5 p-1 bg-teal-400 text-gray-100 flex items-center justify-center w-12 h-12 cursor-pointer fixed" @click="getIngrediens">
+        <div
+          class="shadow hover:shadow-md rounded-full bottom-0 right-0 mb-10 mr-5 p-1 bg-teal-400 text-gray-100 flex items-center justify-center w-12 h-12 cursor-pointer fixed"
+          @click="getIngrediens">
           O
         </div>
         <div class="-mx-5 -mt-5 mb-5">
