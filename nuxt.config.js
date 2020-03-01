@@ -1,10 +1,11 @@
 import axios from "axios"
 let dynamicRoutes = () => {
-return axios
+  return axios
   .get("/rezepte-0-250.json")
   .then(res => {
-    return res.data.items.map(recipe => `/recipes/${recipe.slug}`)
+    return res.data.map(recipe => `/recipes/${recipe.slug}`)
   })
+  con
 }
 
 export default {
@@ -61,7 +62,7 @@ export default {
   axios: {
   },
   generate: {
-    routes: dynamicRoutes
+    // routes: dynamicRoutes
   },
   /*
   ** Build configuration
