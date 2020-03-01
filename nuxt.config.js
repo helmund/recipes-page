@@ -1,11 +1,12 @@
 import axios from "axios"
 let dynamicRoutes = () => {
 return axios
-  .get("/recipes.json")
+  .get("/rezepte-0-250.json")
   .then(res => {
-    return res.data.map(recipe => `/recipes/${recipe.slug}`)
+    return res.data.items.map(recipe => `/recipes/${recipe.slug}`)
   })
 }
+
 export default {
   mode: 'spa',
   /*
