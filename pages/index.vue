@@ -1,5 +1,12 @@
 <template>
   <div class="max-w-5xl mx-auto py-5">
+    <div class="flex justify-center flex-wrap">
+        <a v-for="tag in tags" :key="tag.id"
+          :href="`tags/${tag.slug}`"
+          class="mx-1 my-1 bg-green-500 rounded p-1 text-white">
+          {{ tag.name }}
+        </a>
+    </div>
     <div class="flex justify-center">
       <button @click="picker" class="mr-2 bg-green-500 rounded p-1 text-white">
         Zufallsrezept
@@ -43,13 +50,21 @@ export default {
     recipes () {
       return this.$store.state.recipes
     },
+    tags () {
+      return this.$store.state.tags
+    },
     isLoaded () {
       return !this.$store.state.loading
     }
   },
 
   created () {
-    this.$store.dispatch('getRecipes')
+    this.$store.dispatch('getRecipes'),
+    this.$store.dispatch('getTags')
+  },
+
+  updated () {
+    console.log('updated')
   },
   methods: {
     picker () {

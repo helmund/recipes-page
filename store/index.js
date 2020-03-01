@@ -1,5 +1,6 @@
 export const state = () => ({
   recipes: [],
+  tags: [],
   loading: true
 })
 
@@ -9,6 +10,13 @@ export const mutations = {
   },
   updateRecipes: (state, recipes) => {
     state.recipes = Object.freeze(recipes),
+    state.loading = false;
+  },
+  getTags: (state) => {
+    state.loading = true;
+  },
+  updateTags: (state, tags) => {
+    state.tags = Object.freeze(tags),
     state.loading = false;
   }
 }
@@ -39,6 +47,28 @@ export const actions = {
         yields
       }))
     commit('updateRecipes', recipes)
+  },
+  catch (err) {
+    console.log(err)
+  },
+
+  async getTags ({
+    state,
+    commit
+  }) {
+    commit('getTags', tags)
+    if (state.tags.length) { return }
+    let tags = await fetch('/tags.json'
+    ).then(res => res.json())
+    tags = tags.items
+      // .filter(el => el.status === 'publish')
+      .map(({ id, slug, name, type }) => ({
+        id,
+        slug,
+        name,
+        type
+      }))
+    commit('updateTags', tags)
   },
   catch (err) {
     console.log(err)
