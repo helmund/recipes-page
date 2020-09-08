@@ -1,0 +1,26 @@
+.card__details {
+    background: linear-gradient(to bottom,  #0000 0%,#000000a6 68%,#000000a6 100%,#000000a6 101%);
+}
+
+.card__image {
+    transition: all 1s linear;
+    opacity: .9;
+}
+
+.card:hover .card__image {
+    opacity: 1;
+    transform: scale(1.2)
+}
+
+.card__link {
+    bottom: 1rem;
+    right: 1rem;
+    width: 3rem;
+    height: 3rem;
+    transform: translateY(150%) rotate(0deg);
+    transition: transform .4s .1s;
+}
+
+.card:hover .card__link {
+    transform: translateY(0) rotate(0deg);
+}

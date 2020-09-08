@@ -28,7 +28,7 @@ export const actions = {
   }) {
     commit('getRecipes', recipes)
     if (state.recipes.length) { return }
-    let recipes = await fetch('/rezepte-0-250.json'
+    let recipes = await fetch('/recipes-250-500.json'
     ).then(res => res.json())
     recipes = recipes.items
       // .filter(el => el.status === 'publish')

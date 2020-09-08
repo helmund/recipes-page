@@ -16,7 +16,7 @@
         </div>
       </div>
       <a
-        :href="`recipes/${item.slug}`"
+        :href="`/recipes/${item.slug}`"
         class="absolute rounded-full card__link p-1 bg-teal-400 text-gray-100 flex items-center justify-center cursor-pointer"
       >
         []

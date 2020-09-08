@@ -3,6 +3,7 @@
     <h1 class="text-center my-5">
       {{ tag.slug }}
     </h1>
+    <!-- TODO: filter before -->
     <div class="max-w-5xl mx-auto py-5">
       <div class="flex flex-wrap">
         <div v-for="recipe in recipes" :key="recipe.id" class="w-full md:w-6/12 my-4 px-2">
@@ -36,9 +37,9 @@ export default {
     tag () {
       return this.tags.find(el => el.slug === this.slug)
     },
-    // recipeWithTag () {
-    //   // return this.tags.find(el => el.tags[el.index].slug === this.slug)
-    // },
+    recipeWithTag () {
+      // return this.$store.state.tags.find(el => el.tags[el.index].slug === this.slug)
+    },
     isLoaded () {
       return !this.$store.state.loading
     }
