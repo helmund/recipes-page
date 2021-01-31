@@ -1,8 +1,10 @@
-# hello-fresh
+# recipes-page
 
-> My sensational Nuxt.js project
+A personal page with recipes for lunch & learn
 
 ## Build Setup
+
+Nuxt.js
 
 ``` bash
 # install dependencies
@@ -18,5 +20,3 @@ $ npm run start
 # generate static project
 $ npm run generate
 ```
-
-For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).
